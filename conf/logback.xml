@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <appender name="logger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/out.log</File>
+        <Encoding>UTF-8</Encoding>
+
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>logs/info.%i.log.gz</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>9</MaxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>1GB</MaxFileSize>
+        </triggeringPolicy>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%date %-5level %logger [%thread] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/error.log</File>
+        <Encoding>UTF-8</Encoding>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>logs/error.%i.log.gz</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>9</MaxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>1GB</MaxFileSize>
+        </triggeringPolicy>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%date %-5level %logger [%thread] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.novus.salat" level="TRACE"/>
+
+    <root level="TRACE">
+        <appender-ref ref="logger"/>
+        <appender-ref ref="error"/>
+    </root>
+    
+</configuration>
