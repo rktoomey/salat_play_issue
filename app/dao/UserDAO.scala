@@ -8,7 +8,4 @@ import com.novus.salat._
 // the implicit ctx is defined in models package object
 import models._
 
-object UserDao extends SalatDAO[User, ObjectId] {
-  val _grater = grater[User]
-  val collection = DB.connection("users")
-}
+object UserDao extends SalatDAO[User, ObjectId](collection = DB.connection("users"))

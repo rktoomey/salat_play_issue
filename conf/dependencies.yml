@@ -1,7 +1,9 @@
 #Application dependencies
 require:
-    - play -> scala 0.9
-    - com.novus -> salat-core_2.8.1 0.0.7-SNAPSHOT   
+    - play 1.2.2RC1
+    - play -> scala 0.9.1:
+        transitive: false
+    - com.novus -> salat-core_2.8.1 0.0.8-SNAPSHOT   
 #   - org.slf4j -> slf4j-api 1.5.11
     - ch.qos.logback -> logback-core 0.9.28
     - ch.qos.logback -> logback-classic 0.9.28
